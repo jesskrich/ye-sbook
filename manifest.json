@@ -1,0 +1,26 @@
+{
+   "background": {
+      "scripts": [ "background.js", "jquery-3.1.1.min.js" ]
+   },
+   "browser_action": {
+      "default_icon": "kanye.png"
+   },
+   "content_scripts": [ {
+      "css": [ "style.css" ],
+      "js": [ "jquery-3.1.1.min.js", "content.js"],
+      "matches": [ "https://www.facebook.com/*", "http://www.facebook.com/*", "http://facebook.com/*", "https://facebook.com/*"],
+      "all_frames" : true,
+      "run_at" : "document_start"
+   } ],
+   "icons" : {
+       "64" : "kanye.png",
+       "64" : "icon.png"
+   },
+   "description": "Tired of your Facebook friends abusing color backgrounds with mundane statuses? Now you can replace those posts with Kanye West quotes to match the bold, brazen, attention-grabbing aesthetic.",
+   "manifest_version": 2,
+   "name": "Ye'sbook",
+   "permissions": [ "activeTab", "https://www.facebook.com/*", "http://www.facebook.com/*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0",
+   "web_accessible_resources": [ "images/*.png" ]
+}
