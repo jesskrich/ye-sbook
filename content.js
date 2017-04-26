@@ -22,14 +22,16 @@ var kanyeQuotes = [
 ];
 
 var spans = document.getElementsByClassName('_4a6n');
-var j = 0;
 
 function myFunction() {
-    for (var i = j, l = spans.length; i < l; i++) {
-            spans[i].innerHTML=kanyeQuotes[Math.floor(Math.random()*kanyeQuotes.length)];
-            j += 1;
+    for (var i = 0, l = spans.length; i < l; i++) {
+            if (spans[i].edited != true) {
+                spans[i].innerHTML=kanyeQuotes[Math.floor(Math.random()*kanyeQuotes.length)];
+                spans[i].edited = true;
+            }
+            console.log(i);
     }
 }
 
 
-setInterval(myFunction, 10000);
+setInterval(myFunction, 3000);
