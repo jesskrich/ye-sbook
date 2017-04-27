@@ -1,4 +1,5 @@
 
+
 var kanyeQuotes = [
     "I’m going down as a legend, whether you like me or not. I am the new Jim Morrison. I am the new Kurt Cobain.",
     "Everything I'm not made me everything I am... In my humble opinion that’s a prophetic statement. Gandhi would have said something like that.",
@@ -23,7 +24,7 @@ var kanyeQuotes = [
 
 var spans = document.getElementsByClassName('_4a6n');
 
-function myFunction() {
+function myFunction(rootElm) {
     for (var i = 0, l = spans.length; i < l; i++) {
             if (spans[i].edited != true) {
                 spans[i].innerHTML=kanyeQuotes[Math.floor(Math.random()*kanyeQuotes.length)];
@@ -34,4 +35,16 @@ function myFunction() {
 }
 
 
-setInterval(myFunction, 3000);
+myFunction(document.body);
+
+var observer = new WebKitMutationObserver(function (mutations) {
+    for (i in mutations) {
+        for (j = 0, l = mutations[i].addedNodes.length; j < l; j++) {
+            myFunction(mutations[i].addedNodes[j]);
+        }
+    }
+});
+
+observer.observe(document.body, {childList : true, subtree : true});
+
+// setInterval(myFunction, 1000);
